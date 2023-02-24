@@ -52,7 +52,7 @@
 
 2. 运行
     
-    这个工具需要Nodejs环境来运行，所以请先安装Nodejs环境~（iOS推荐play.js这个软件）
+    这个工具需要Nodejs环境来运行，所以请先安装Nodejs环境~（iOS推荐用下下节的快捷指令）
 
     安装完后点页面上的Code按钮，选Download zip，下载好后解压
 
@@ -92,4 +92,4 @@ v1.2: 加入utoken登录方法
 
 ## 快捷指令
 
-由于本人使用苹果全家桶，而之前的codeSandbox软件在某次更新中必须登录才能使用，非常麻烦，所以制作了一个快捷指令来简化操作，可以[在这里下载](https://www.icloud.com/shortcuts/ab967cd1ea074945add2e11ba5ec43aa)，仅支持utoken登录。导入后按照提示输入抓到的utoken和场地ibeacon信息即可
+由于本人使用苹果全家桶，而之前的codeSandbox软件在某次更新后必须登录才能使用，非常麻烦，所以制作了一个快捷指令来简化操作，可以[在这里下载](https://www.icloud.com/shortcuts/ab967cd1ea074945add2e11ba5ec43aa)，仅支持utoken登录。导入后按照提示输入抓到的utoken和场地ibeacon信息即可
