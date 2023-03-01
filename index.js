@@ -48,12 +48,13 @@ async function readlineSync(question) {
     return new Promise((resolve, reject) => {
         rl.question(question, (ans) => {
             resolve(ans);
+            rl.close()
         })
     })
 }
 
 function parseSendData(data) {
-    return `data=${data}&sign=${crypto.createHash('md5').update("lpKK*TJE8WaIg%93O0pfn0#xS0i3xE$zdata"+data).digest("hex")}`
+    return `data=${data}&sign=${crypto.createHash('md5').update("lpKK*TJE8WaIg%93O0pfn0#xS0i3xE$zdata" + data).digest("hex")}`
 }
 (async () => {
     console.warn("读取配置文件...");
@@ -69,19 +70,19 @@ function parseSendData(data) {
         console.warn("配置文件无效。");
         process.exit();
     }
-    if(!config.userInfo.useUtoken){
+    if (!config.userInfo.userToken) {
         console.warn("正在尝试登录...");
-        var loginResult = JSON.parse((await sendHttpRequest(HOST,443,"/api/reg/login",{
+        var loginResult = JSON.parse((await sendHttpRequest(HOST, 443, "/api/reg/login", {
             "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-        },"utf8",parseSendData(JSON.stringify({info:uuid,mobile:userInfo.phone,password:userInfo.password,type:"iPhone13,3"})))).data)
-        if(loginResult.code!="200"){
+        }, "utf8", parseSendData(JSON.stringify({ info: uuid, mobile: userInfo.phone, password: userInfo.password, type: "iPhone13,3" })))).data)
+        if (loginResult.code != "200") {
             console.warn("登录失败。");
             process.exit();
         }
-        utoken=loginResult.data.utoken;
-    }else{
+        utoken = loginResult.data.utoken;
+    } else {
         console.warn("使用utoken登录...");
-        utoken=config.userInfo.utoken;
+        utoken = config.userInfo.utoken;
     }
     console.warn("正在获取签到点...");
     var ibeacon = JSON.stringify({
@@ -97,17 +98,17 @@ function parseSendData(data) {
         console.warn("获取签到点失败。");
         process.exit();
     }
-    if (!spotResult.data[0].nonce) {
+    if (!spotResult.data[0]?.nonce) {
         console.warn("获取签到点失败。");
         process.exit();
     }
     console.warn(`签到点：${spotResult.data[0].name}，可签到时间：${spotResult.data[0].sign_range}`)
     if (!autoSign) {
-        var input = await readlineSync("要签到吗？(y/n)");
+        var input = await readlineSync("要签到吗？(y/n) ");
         if (input != "y") {
             process.exit();
         }
-    }else{
+    } else {
         console.warn("已设置为自动签到");
     }
     console.warn("尝试签到...");
