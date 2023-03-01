@@ -70,7 +70,7 @@ function parseSendData(data) {
         console.warn("配置文件无效。");
         process.exit();
     }
-    if (!config.userInfo.userToken) {
+    if (!config.userInfo.useToken) {
         console.warn("正在尝试登录...");
         var loginResult = JSON.parse((await sendHttpRequest(HOST, 443, "/api/reg/login", {
             "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
