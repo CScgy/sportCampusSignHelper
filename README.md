@@ -22,7 +22,7 @@
     ```JSON
     {
         "userInfo": {
-            "useUtoken": true,
+            "useToken": true,
             "phone": "11451419198",
             "password": "myPassword",
             "utoken": "1234567890abcdef1234567890abcdef"
