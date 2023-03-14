@@ -22,7 +22,7 @@
     ```JSON
     {
         "userInfo": {
-            "useToken": true,
+            "useUtoken": true,
             "phone": "11451419198",
             "password": "myPassword",
             "utoken": "1234567890abcdef1234567890abcdef"
@@ -40,7 +40,7 @@
 
     以下两种方式选择一种即可
 
-    1. 使用`utoken`登录：将抓包得到的utoken(应为32位的16进制字符串)填入`utoken`字段，并将`useToken`字段置为true即可。使用这种时登录方式，无需填写`phone`和`password`字段，并且可以免除在APP上重复登陆的情况
+    1. 使用`utoken`登录：将抓包得到的utoken(应为32位的16进制字符串)填入`utoken`字段，并将`useUtoken`字段置为true即可。使用这种时登录方式，无需填写`phone`和`password`字段，并且可以免除在APP上重复登陆的情况
 
     2. 使用手机号和密码登录。其中，`phone`和`password`字段为高校体育账号的手机号和密码。这些信息只会被发送到高校体育服务器。
 
